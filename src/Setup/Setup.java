@@ -2,9 +2,12 @@ package Setup;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -19,8 +22,8 @@ public class Setup
 	  public static String path;
 	  public static String RootDirectory=System.getProperty("user.dir");
 	  public static Logger log = Logger.getLogger("devpinoyLogger");
-		
-		static String driverPath = RootDirectory+ "\\DriverExe\\";
+	  public static WebDriverWait wait;
+	  public static String driverPath = RootDirectory+ "\\DriverExe\\";
 		
 			public WebDriver getDriver() 
 			{
@@ -92,6 +95,48 @@ public class Setup
 					System.out.println("BrowserType Error....." + e.getStackTrace());
 				}
 			}
+			
+			public static void waitForVisitibilty(WebElement element)
+			{
+				wait=new WebDriverWait(driver,10);
+				wait.until(ExpectedConditions.visibilityOf(element));
+			}
+			
+			public static void click(WebElement element)
+			{
+				waitForVisitibilty(element);
+				element.click();
+			}
+			public static void sendKeys(WebElement element,String keyword)
+			{
+				waitForVisitibilty(element);
+				element.clear();
+				element.sendKeys(keyword);
+			}
+			public static boolean isPageLoaded(WebElement element)
+			{
+				waitForVisitibilty(element);
+				return element.isDisplayed();
+				
+			}
+			public static boolean isElementPresent(WebElement element)
+			{
+				waitForVisitibilty(element);
+				return element.isDisplayed();
+				
+			}
+			public static String getTest(WebElement element)
+			{
+				waitForVisitibilty(element);
+				return element.getText();
+			}
+			
+			public static String getAttributeVolume(WebElement element, String attribute)
+			{
+				waitForVisitibilty(element);
+				return element.getAttribute(attribute);
+			}
+			
 	  
 
 }

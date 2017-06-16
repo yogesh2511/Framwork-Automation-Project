@@ -6,10 +6,10 @@ public class Config extends Setup
 {
 	//#############################################################################################################
 		//Excell constant data
-	 public static final String URL = "http://store.demoqa.com/products-page/your-account/";
+	 public static final String URL = "http://stagingsrc.sourceprosonboard.webteamcorp.com/";
 	 public static final String Browser = "firefox";
-     public static final String LoginUsername = "testuser_1";
-     public static final String LoginPassword = "Test@123";
+     public static final String LoginUsername = "yogeshsolanki@rangam.com";
+     public static final String LoginPassword = "rangam@123";
      public static final String Path_TestData = RootDirectory + "//TestData//";
      public static final String File_TestData = "TestData.xlsx";
 	//##############################################################################################################
